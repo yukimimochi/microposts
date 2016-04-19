@@ -1,0 +1,20 @@
+<% if logged_in? %>
+  
+   <h3>follower (
+<%= @user.follower_users.count %>
+)</h3>
+           <ol class="follower_users">
+          <%= render partial: 'follower_users/follower_user', collection: @follower_users %>
+         <%= paginate @follower_users %>
+     
+      </ol>
+  
+<% else %>
+  <div class="center jumbotron">
+      <h1>Welcome to the Microposts</h1>
+      
+      <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+  </div>
+<% end %>
+
+
