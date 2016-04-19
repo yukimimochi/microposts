@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   
   def show # 追加
    @user = User.find(params[:id])
+   @microposts = @user.microposts.order(created_at: :desc)
   end
   
   def new
@@ -56,8 +57,4 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
       redirect_to(root_url) unless current_user?(@user)
     end
-    
-  
-
-  
-end
+  end
